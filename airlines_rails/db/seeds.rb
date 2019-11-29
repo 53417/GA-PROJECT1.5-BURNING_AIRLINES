@@ -9,7 +9,7 @@
 sean = User.create(
     username: 'sean',
     password_digest: 'password',
-    is_admin: false,
+    is_admin: true,
 );
 
 kay = User.create(
