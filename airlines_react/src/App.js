@@ -6,7 +6,7 @@ import LoginForm from "./components/loginForm";
 import RegisterForm from "./components/registerForm";
 import Logout from "./components/logout";
 import auth from "./services/authService";
-import 'font-awesome/css/font-awesome.css';
+// import 'font-awesome/css/font-awesome.css';
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import FlightDetails from "./pages/displayFlights"
