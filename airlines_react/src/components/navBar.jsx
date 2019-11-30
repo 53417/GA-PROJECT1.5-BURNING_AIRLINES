@@ -23,8 +23,8 @@ const NavBar = ({ user }) => {
           <NavLink className="nav-item nav-link" to="/destinations">
             Destinations
           </NavLink>
-          <NavLink className="nav-item nav-link" to="/flights">
-            Flights
+          <NavLink className="nav-item nav-link" to="/displayFlights">
+            Display Flights
           </NavLink>
           <NavLink className="nav-item nav-link" to="/userSearchFlights">
             Search Flights
