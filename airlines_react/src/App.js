@@ -9,7 +9,8 @@ import auth from "./services/authService";
 import 'font-awesome/css/font-awesome.css';
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
-import FlightDetails from "./pages/displayFlights"
+import FlightDetails from "./pages/displayFlights";
+import UserSearchFlights from "./components/UserSearchFlights";
 
 
 class App extends Component { 
@@ -33,6 +34,7 @@ class App extends Component {
             <Route path="/logout" component={Logout} />
             <Route path="/home" component={ Destinations } />
             <Route path="/showFlight/:flightId" component={FlightDetails}/>
+            <Route path="/userSearchFlights" component={UserSearchFlights} />
             <Redirect from="/" exact to="/home" />
           </Switch>
         </main>

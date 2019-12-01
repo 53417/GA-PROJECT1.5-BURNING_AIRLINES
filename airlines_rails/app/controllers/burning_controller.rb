@@ -9,7 +9,8 @@ class BurningController < ApplicationController
     end
 
     def destination_read
-        @destinations = ActiveRecord::Base.connection.exec_query("SELECT * FROM destinations").to_json
+        @destinations = ActiveRecord::Base.connection.exec_query("SELECT * FROM destinations")
+        render json: @destinations
     end
 
     def destination_update
@@ -37,7 +38,8 @@ class BurningController < ApplicationController
     end
 
     def flight_read
-        @flights = ActiveRecord::Base.connection.exec_query("SELECT * FROM flights").to_json
+        @flights = ActiveRecord::Base.connection.exec_query("SELECT * FROM flights")
+        render json: @flights
     end
 
     def flight_update
@@ -66,7 +68,8 @@ class BurningController < ApplicationController
     end
 
     def plane_read
-        @planes = ActiveRecord::Base.connection.exec_query("SELECT * FROM planes").to_json
+        @planes = ActiveRecord::Base.connection.exec_query("SELECT * FROM planes")
+        render json: @planes
     end
 
     def plane_update
@@ -90,7 +93,8 @@ class BurningController < ApplicationController
 
     #SEATING
     def seating_read
-        @seatings = ActiveRecord::Base.connection.exec_query("SELECT * FROM seatings").to_json
+        @seatings = ActiveRecord::Base.connection.exec_query("SELECT * FROM seatings")
+        render json: @seatings
     end
 
     def seating_update
@@ -104,7 +108,8 @@ class BurningController < ApplicationController
 
     #USERS
     def user_read
-        @users = ActiveRecord::Base.connection.exec_query("SELECT * FROM users").to_json
+        @users = ActiveRecord::Base.connection.exec_query("SELECT * FROM users")
+        render json: @users
     end
 
 end
