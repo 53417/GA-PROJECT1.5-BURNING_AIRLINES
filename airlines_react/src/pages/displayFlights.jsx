@@ -7,6 +7,7 @@ export default class FlightDetails extends React.Component {
         super(props);
         this.state = {
             selectedSeat:'0-0'
+
         };
     }
     onSeatSelected(seatId) {
@@ -14,20 +15,23 @@ export default class FlightDetails extends React.Component {
             selectedSeat: seatId
         });
     }
+    onBookingClicked(book){
+        console.log('hello')
+    }
     render() {
         return (
             <div>
                 Flight Details <br />
-                FlightId: {this.props.flightId}  <br />
-                SelectedSeat: {this.state.selectedSeat}
+                Flight Id: {this.props.flightId}  <br />
+                Selected Seat: {this.state.selectedSeat}
                 <br />
                 <Seating 
-                    rows={40} 
+                    rows={12} 
                     cols={4} 
                     selectedSeat={this.state.selectedSeat}
                     onSeatSelected={(seatId) => this.onSeatSelected(seatId)}>
                 </Seating>
-                <SeatBooking seat={this.state.selectedSeat} onBookingClicked={() => {} }></SeatBooking>
+                <SeatBooking seat={this.state.selectedSeat} onBookingClicked={() => {this.onBookingClicked()} }></SeatBooking>
             </div>
         );
     }

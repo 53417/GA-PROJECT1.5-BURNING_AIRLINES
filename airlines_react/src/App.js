@@ -6,7 +6,7 @@ import LoginForm from "./components/loginForm";
 import RegisterForm from "./components/registerForm";
 import Logout from "./components/logout";
 import auth from "./services/authService";
-// import 'font-awesome/css/font-awesome.css';
+import 'font-awesome/css/font-awesome.css';
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import FlightDetails from "./pages/displayFlights"
@@ -31,9 +31,9 @@ class App extends Component {
             <Route path="/register" component={RegisterForm} />
             <Route path="/login" component={LoginForm} />
             <Route path="/logout" component={Logout} />
-            <Route path="/" component={ Destinations } />
-            <Route path="/showFlight" component={FlightDetails}/>
-            <Redirect from="/" exact to="/destination" />
+            <Route path="/home" component={ Destinations } />
+            <Route path="/showFlight/:flightId" component={FlightDetails}/>
+            <Redirect from="/" exact to="/home" />
           </Switch>
         </main>
       
