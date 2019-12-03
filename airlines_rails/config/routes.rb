@@ -1,6 +1,17 @@
 Rails.application.routes.draw do
-  post 'user_token' => 'user_token#create'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+    resources :sessions, only: [:create]
+    resources :registrations, only: [:create]
+
+     scope '/api/v1' do
+       resources :users
+     end
+  
+    # get 'users/index'
+    # get 'users/create'
+    # get 'users/update'
+    # get 'users/destroy'
+    # post 'authenticate', to: 'authentication#authenticate'
+    # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   get 'burning/destination_create' => 'burning#destination_create'
   get 'burning/destination_read' => 'burning#destination_read'
