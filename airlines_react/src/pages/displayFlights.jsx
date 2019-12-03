@@ -8,15 +8,15 @@ export default class FlightDetails extends React.Component {
         super(props);
         this.state = {
             selectedSeat:'0-0',
-            planeData: []
+            planeData: [],
+            flightId: 0
         };
     }
 
     componentDidMount() {
         Axios.get('http://localhost:3000/burning/plane_read.json')      
                 .then(res => {const planes = res.data;
-                    this.setState({ planeData: planes });
-        console.log(this.state.planeData)
+                    this.setState({ planeData: planes});
         })
     }
 
@@ -36,10 +36,10 @@ export default class FlightDetails extends React.Component {
                 Selected Seat: {this.state.selectedSeat}
                 <br />
                 <Seating 
-                    rows={10} 
-                    cols={4} 
+                    rows={this.state.planeData.length ? this.state.planeData[this.state.flightId].rows : 0} 
+                    cols={this.state.planeData.length ? this.state.planeData[this.state.flightId].cols : 0} 
                     selectedSeat={this.state.selectedSeat}
-                    onSeatSelected={(seatId) => this.onSeatSelected(seatId)}>
+                    onSeatSelected={(seatId) => this.onSeatSelected(seatId)} planeData={this.state.planeData}>
                 </Seating>
                 <SeatBooking seat={this.state.selectedSeat} onBookingClicked={() => {this.onBookingClicked()} }></SeatBooking>
             </div>

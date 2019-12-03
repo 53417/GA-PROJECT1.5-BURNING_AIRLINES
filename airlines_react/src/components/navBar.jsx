@@ -1,11 +1,11 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "@reach/router";
 
 const NavBar = ({ user }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <img src='https://cdn4.iconfinder.com/data/icons/air-crashes/512/xxx044-512.png' alt="BurningAirlines" height="36" width="36"></img>
-      <Link className="navbar-brand" to="/">
+      <Link to="home">
         Burning Airlines
       </Link>
       <button
@@ -21,33 +21,33 @@ const NavBar = ({ user }) => {
       </button>
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div className="navbar-nav">
-          <NavLink className="nav-item nav-link" to="/destinations">
+          <Link className="nav-item nav-link" to="/destinations">
             Destinations
-          </NavLink>
-          <NavLink className="nav-item nav-link" to="/displayFlights">
+          </Link>
+          <Link className="nav-item nav-link" to="/displayFlights">
             Display Flights
-          </NavLink>
-          <NavLink className="nav-item nav-link" to="/userSearchFlights">
+          </Link>
+          <Link className="nav-item nav-link" to="/userSearchFlights">
             Search Flights
-          </NavLink>
+          </Link>
           {!user && (
             <React.Fragment>
-              <NavLink className="nav-item nav-link" to="/login">
+              <Link className="nav-item nav-link" to="/login">
                 Login
-              </NavLink>
-              <NavLink className="nav-item nav-link" to="/register">
+              </Link>
+              <Link className="nav-item nav-link" to="/register">
                 Register
-              </NavLink>
+              </Link>
             </React.Fragment>
           )}
           {user && (
             <React.Fragment>
-              <NavLink className="nav-item nav-link" to="/profile">
+              <Link className="nav-item nav-link" to="/profile">
                 {user.name}
-              </NavLink>
-              <NavLink className="nav-item nav-link" to="/logout">
+              </Link>
+              <Link className="nav-item nav-link" to="/logout">
                 Logout
-              </NavLink>
+              </Link>
             </React.Fragment>
           )}
         </div>
