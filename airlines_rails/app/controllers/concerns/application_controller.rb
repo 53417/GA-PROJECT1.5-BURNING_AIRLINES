@@ -1,10 +1,7 @@
 class ApplicationController < ActionController::Base
     # include Knock::Authenticable
-
-    def login
-        @logged_in_user = User.find_by :id => session[:user_id]
-    end
-
+    skip_before_action :verify_authenticity_token
+    
     # before_action :authenticate_user, except: [:index]
     # Resources can now be secured by calling authenticate_user as a before_action inside your controllers
 

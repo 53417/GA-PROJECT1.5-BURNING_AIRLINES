@@ -5,20 +5,24 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+User.destroy_all 
 
 sean = User.create(
+    email: 'sean@ga.com.au',
     username: 'sean',
     password_digest: 'password',
     is_admin: true,
 );
 
 kay = User.create(
+    email:'kay@ga.com.au',
     username: 'kay',
     password_digest: 'password',
     is_admin: false,
 );
 
 paulo = User.create(
+    email:'paulo@ga.com.au',
     username: 'paulo', 
     password_digest: 'password', 
     is_admin: false,
@@ -86,3 +90,5 @@ Seating.create(
     flight_id: flight1.id,
     booked: false
 );
+
+put "seeding data base created #{User.all.length}"
