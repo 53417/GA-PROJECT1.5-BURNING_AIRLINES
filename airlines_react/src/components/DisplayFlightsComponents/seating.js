@@ -23,11 +23,10 @@ export default class Seating extends React.Component
                         {rows.map((r, rowIndex) => <tr key={"row-"+rowIndex}>
                             { r.map((c, colIndex) => <td 
                                 key={"seat-"+rowIndex+"-"+colIndex}
-                                onClick={() => this.props.onSeatSelected(rowIndex+'-'+colIndex)}
-                            >
+                                onClick={() => this.props.onSeatSelected(rowIndex+'-'+colIndex)}>
                                 { (selectedRowId==rowIndex && selectedColId==colIndex) ? 
                                     <span>[x]</span> 
-                                : 
+                                :
                                     <span>[ ]</span> 
                                 }
                             </td>)}

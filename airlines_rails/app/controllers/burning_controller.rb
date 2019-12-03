@@ -1,5 +1,5 @@
 class BurningController < ApplicationController
-
+    skip_before_action :verify_authenticity_token
     #DESTINATIONS
     def destination_create
         new_destination = Desination.new
