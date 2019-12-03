@@ -28,6 +28,7 @@ class BurningController < ApplicationController
 
     #FLIGHTS
     def flight_create
+        # flight_create?plane_id=X&fly_from=X&fly_to=X&fly_time=X
         new_flight = Flight.new
         new_flight.plane_id = params[:plane_id]
         new_flight.fly_from = params[:fly_from]

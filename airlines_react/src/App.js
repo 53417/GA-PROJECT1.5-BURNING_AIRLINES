@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, Redirect, Switch } from "react-router-dom";
+import { Router, Link } from "@reach/router"
 import NavBar from "./components/navBar";
 import Destinations from './components/destinations';
 import LoginForm from "./components/loginForm";
@@ -28,15 +28,14 @@ class App extends Component {
       <React.Fragment>
         <NavBar user={user} />
         <main className="container">
-          <Switch>
-            <Route path="/register" component={RegisterForm} />
-            <Route path="/login" component={LoginForm} />
-            <Route path="/logout" component={Logout} />
-            <Route path="/home" component={ Destinations } />
-            <Route path="/showFlight/:flightId" component={FlightDetails}/>
-            <Route path="/userSearchFlights" component={UserSearchFlights} />
-            <Redirect from="/" exact to="/home" />
-          </Switch>
+          <Router>
+            <RegisterForm path="/register"/>
+            <LoginForm path="/login"/>
+            <Logout path="/logout"/>
+            <Destinations path="/home" />
+            <FlightDetails path="/showFlight/:flightId"/>
+            <UserSearchFlights path="/userSearchFlights"/>
+          </Router>
         </main>
       </React.Fragment>
     );

@@ -1,5 +1,5 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
+import { Link } from "@reach/router";
 import Joi from "joi-browser";
 import Form from "./common/form";
 import auth from "../services/authService";
@@ -36,7 +36,7 @@ class LoginForm extends Form {
   };
 
   render() {
-    if (auth.getCurrentUser()) return <Redirect to="/" />;
+    if (auth.getCurrentUser()) return <Link to="/" />;
 
     return (
       <div>
