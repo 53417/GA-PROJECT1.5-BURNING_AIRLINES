@@ -5,7 +5,10 @@ class UserSearchFlights extends Component {
 
     render() {
         return(
+            <>
+            <h1>Search Flights Page</h1>
             <FlightsList></FlightsList>
+            </>
         )
     }
 }
