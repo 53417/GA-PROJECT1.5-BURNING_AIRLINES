@@ -4,6 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 const NavBar = ({ user }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <img src='https://cdn4.iconfinder.com/data/icons/air-crashes/512/xxx044-512.png' alt="bURNING" height="36" width="36"></img>
       <Link className="navbar-brand" to="/">
         Burning Airlines
       </Link>
