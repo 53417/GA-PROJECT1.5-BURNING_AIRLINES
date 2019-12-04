@@ -1,5 +1,5 @@
 class BurningController < ApplicationController
-    skip_before_action :verify_authenticity_token
+    # skip_before_action :verify_authenticity_token
     #DESTINATIONS
     def destination_create
         new_destination = Desination.new
@@ -70,6 +70,7 @@ class BurningController < ApplicationController
 
     def plane_read
         @planes = ActiveRecord::Base.connection.exec_query("SELECT * FROM planes")
+        puts 'hey'
         render json: @planes
     end
 
