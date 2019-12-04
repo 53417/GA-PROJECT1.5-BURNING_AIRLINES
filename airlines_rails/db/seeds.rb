@@ -91,4 +91,4 @@ Seating.create(
     booked: false
 );
 
-put "seeding data base created #{User.all.length}"
+puts "seeding data base created #{User.all.length}"
