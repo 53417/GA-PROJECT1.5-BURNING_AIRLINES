@@ -8,21 +8,21 @@
 User.destroy_all 
 
 sean = User.create(
-    email: 'sean@ga.com.au',
+    # email: 'sean@ga.com.au',
     username: 'sean',
     password_digest: 'password',
     is_admin: true,
 );
 
 kay = User.create(
-    email:'kay@ga.com.au',
+    # email:'kay@ga.com.au',
     username: 'kay',
     password_digest: 'password',
     is_admin: false,
 );
 
 paulo = User.create(
-    email:'paulo@ga.com.au',
+    # email:'paulo@ga.com.au',
     username: 'paulo', 
     password_digest: 'password', 
     is_admin: false,
@@ -91,4 +91,3 @@ Seating.create(
     booked: false
 );
 
-put "seeding data base created #{User.all.length}"
