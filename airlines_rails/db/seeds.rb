@@ -91,7 +91,4 @@ Seating.create(
     booked: false
 );
 
-<<<<<<< HEAD
 puts "seeding data base created #{User.all.length}"
-=======
->>>>>>> d9929bd460fe9e73af271e459155df328eb98e8b
