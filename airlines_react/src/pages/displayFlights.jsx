@@ -26,7 +26,16 @@ export default class FlightDetails extends React.Component {
         });
     }
     onBookingClicked(book){
-        console.log('hello')
+        Axios.post('/burning/seating_update', {
+            firstName: 'Fred',
+            lastName: 'Flintstone'
+          })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
     }
     render() {
         return (
