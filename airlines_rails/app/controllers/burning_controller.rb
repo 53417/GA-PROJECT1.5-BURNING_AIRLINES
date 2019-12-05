@@ -35,6 +35,8 @@ class BurningController < ApplicationController
         new_flight.fly_to = params[:fly_to]
         new_flight.fly_time = params[:fly_time]
         new_flight.save
+        plane = Plane.find_by :id => params[:plane_id]
+
         redirect_to :controller => 'burning', :action => 'flight_read'
     end
 
@@ -44,7 +46,7 @@ class BurningController < ApplicationController
     end
 
     def flight_update
-        flight = Destinatio.find_by :id => params[:flight_id]
+        flight = Flight.find_by :id => params[:flight_id]
         flight.flight = params[:flight]
         flight.save
         redirect_to :controller => 'burning', :action => 'flight_read'
@@ -70,7 +72,6 @@ class BurningController < ApplicationController
 
     def plane_read
         @planes = ActiveRecord::Base.connection.exec_query("SELECT * FROM planes")
-        puts 'hey'
         render json: @planes
     end
 

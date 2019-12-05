@@ -5,11 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.destroy_all 
-Plane.destroy_all
-Destination.destroy_all
-Flight.destroy_all
-Seating.destroy_all
 
 sean = User.create(
     email: 'sean@ga.com.au',
@@ -94,9 +89,3 @@ Seating.create(
     flight_id: flight1.id,
     booked: false
 );
-
-puts "seeding data base created #{User.all.length}"
-puts "seeding data base created #{Plane.all.length}"
-puts "seeding data base created #{Destination.all.length}"
-puts "seeding data base created #{Flight.all.length}"
-puts "seeding data base created #{Seating.all.length}"
