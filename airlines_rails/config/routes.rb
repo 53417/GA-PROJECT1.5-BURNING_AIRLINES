@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
+    resources :sessions, only: [:create]
+    #resources :registrations, only: [:create]
     root to: "static#home"
     
-    resources :sessions, only: [:create]
-    resources :registrations, only: [:create]
-
+    
      scope '/api/v1' do
        resources :users
      end
