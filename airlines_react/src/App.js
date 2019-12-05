@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { Router, Link } from "@reach/router"
 import NavBar from "./components/navBar";
 import Destinations from './components/destinations';
-import LoginForm from "./components/loginForm";
-import RegisterForm from "./components/registerForm";
+import Login from "./components/loginForm";
+import Registration from "./components/registerForm";
 import Logout from "./components/logout";
-import auth from "./services/authService";
+//import auth from "./services/authService";
 import 'font-awesome/css/font-awesome.css';
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
@@ -14,12 +14,17 @@ import UserSearchFlights from "./components/UserSearchFlights";
 
 
 class App extends Component { 
-  state = {};
-
-  componentDidMount() {
-    const user = auth.getCurrentUser();
-    this.setState({ user });
+  constructor() {
+    super();
+    this.state = {
+      loggedInStatus: "NOT_LOGGED_IN",
+      user: {}
+    }
   }
+  // componentDidMount() {
+  //    const user = auth.getCurrentUser();
+  //    this.setState({ user });
+  // }
 
   render() {
     const { user } = this.state;
@@ -29,8 +34,12 @@ class App extends Component {
         <NavBar user={user} />
         <main className="container">
           <Router>
-            <RegisterForm path="/register"/>
-            <LoginForm path="/login"/>
+            <Registration path="/register"/>
+            <Login path={"/login"} 
+              render={props => (
+                <Login {...props} loggedInStatus={this.state.loggedInStatus}/>
+              )} 
+            />
             <Logout path="/logout"/>
             <Destinations path="/home" />
             <FlightDetails path="/showFlight/:flightId"/>

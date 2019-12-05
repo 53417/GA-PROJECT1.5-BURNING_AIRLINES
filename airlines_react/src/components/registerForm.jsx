@@ -1,56 +1,136 @@
-import React from "react";
-import Joi from "joi-browser";
-import Form from "./common/form";
-import * as userService from "../services/userService";
-import auth from "../services/authService";
+import React, { Component } from 'react';
+import axios from 'axios';
 
-class RegisterForm extends Form {
-  state = {
-    data: { username: "", password: "", name: "" },
-    errors: {}
-  };
+class Registration extends Component {
+    constructor(props) {
+        super(props);
 
-  schema = {
-    username: Joi.string()
-      .required()
-      .email()
-      .label("Username"),
-    password: Joi.string()
-      .required()
-      .min(5)
-      .label("Password"),
-    name: Joi.string()
-      .required()
-      .label("Name")
-  };
-
-  doSubmit = async () => {
-    try {
-      const response = await userService.register(this.state.data);
-      auth.loginWithJwt(response.headers["x-auth-token"]);
-      window.location = "/";
-    } catch (ex) {
-      if (ex.response && ex.response.status === 400) {
-        const errors = { ...this.state.errors };
-        errors.username = ex.response.data;
-        this.setState({ errors });
-      }
+        this.state = {
+        email: "",
+        username: "",
+        password: "",
+        password_confirmation: "",
+        registrationErrors: "",
     }
-  };
 
-  render() {
-    return (
-      <div>
-        <h1>Register</h1>
-        <form onSubmit={this.handleSubmit}>
-          {this.renderInput("username", "Username")}
-          {this.renderInput("password", "Password", "password")}
-          {this.renderInput("name", "Name")}
-          {this.renderButton("Register")}
-        </form>
-      </div>
-    );
-  }
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+}
+handleChange(event) {
+   this.setState({
+       [event.target.name]: event.target.value
+   })
 }
 
-export default RegisterForm;
+handleSubmit(event) {
+    const {
+        username,
+        email,
+        password,
+        password_confirmation
+    } = this.state;
+
+    axios.post("http://localhost:3000/registrations", {
+        user: {
+            username: username,
+            email: email,
+            password: password,
+            password_confirmation: password_confirmation
+        }
+    }, 
+    { withCredentials: true }
+    )
+    .then(response => {
+        console.log("registration res", response);
+    })
+    .catch(error => {
+        console.log("resgitration error", error);
+    });
+
+    event.preventDefault();
+}
+render() { 
+    return ( 
+        <div className="container">
+            <h4>Registration</h4>
+            <br />
+            <form onSubmit={this.handleSubmit}>
+                <div className="form-group row"> 
+                    <label 
+                        for="userName" 
+                        class="col-sm-2 col-form-label">
+                        Username
+                    </label>
+                    <div className="col-sm-10">
+                        <input 
+                            type="username" 
+                            name="username" 
+                            placeholder="Username"
+                            value={this.state.username} 
+                            onChange={this.handleChange} 
+                            required
+                        />
+                    </div>
+                </div>
+
+                <div className="form-group row"> 
+                    <label 
+                        for="email" 
+                        class="col-sm-2 col-form-label">
+                        Email
+                    </label>
+                    <div className="col-sm-10">
+                        <input 
+                            type="email" 
+                            name="email" 
+                            placeholder="Email" 
+                            value={this.state.email} 
+                            onChange={this.handleChange} 
+                            required
+                        />
+                    </div>
+                </div>
+                
+                <div className="form-group row"> 
+                    <label 
+                        for="password" 
+                        class="col-sm-2 col-form-label">
+                        Password
+                    </label>
+                    <div className="col-sm-10">
+                        <input 
+                            type="password" 
+                            name="password" 
+                            placeholder="password" 
+                            value={this.state.password} 
+                            onChange={this.handleChange} 
+                            required
+                        />
+                    </div>
+                </div>   
+                
+                <div className="form-group row"> 
+                    <label 
+                        for="password_confirmation" 
+                        class="col-sm-2 col-form-label">
+                        Password Confirmation 
+                    </label>
+                    <div className="col-sm-10">
+                        <input 
+                            type="password" 
+                            name="password_confirmation" 
+                            placeholder="password confirmation" 
+                            value={this.state.password_confirmation} 
+                            onChange={this.handleChange} 
+                            required
+                        />
+                    </div>
+                </div>
+                <button typp="submit" className="btn btn-success">Rigister</button>
+            </form>
+        </div> 
+        );
+    }
+}
+ 
+export default Registration;
